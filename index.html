@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tik Shopper | TOTO & Colección Exclusiva</title>
+    <meta name="description"
+        content="Descubre nuestra colección exclusiva de anime y conoce a TOTO, tu asistente virtual en Tik Shopper.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Lilita+One&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Brand Colors */
+            --tik-red: #FF0040;
+            --tik-yellow: #FFD700;
+            --tik-green: #00FF66;
+            --shopper-blue: #00A8FF;
+            --mascot-blue: #4DB8FF;
+            --purple-base: #8B5CF6;
+
+            /* Neon Colors */
+            --neon-pink: #FF0080;
+            --neon-cyan: #00F2FF;
+            --neon-purple: #9D00FF;
+            --warm-orange: #FF8C00;
+            --electric-blue: #00D9FF;
+
+            /* Gradients */
+            --rainbow-gradient: linear-gradient(135deg,
+                    #FF0080 0%, #FF8C00 16%, #FFD700 33%,
+                    #00FF66 50%, #00CED1 66%, #4169E1 83%, #8B00FF 100%);
+
+            --festival-gradient: linear-gradient(135deg,
+                    #FF1493, #9370DB, #4B0082);
+
+            --energy-gradient: linear-gradient(135deg,
+                    #FF6B35, #F7931E, #FDC830, #00D9FF);
+
+            --hero-gradient: linear-gradient(135deg,
+                    #1a1a2e 0%, #16213e 50%, #0f0c29 100%);
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-glow-pink: 0 0 30px rgba(255, 0, 128, 0.6);
+            --shadow-glow-cyan: 0 0 30px rgba(0, 242, 255, 0.6);
+            --shadow-glow-multi: 0 0 40px rgba(255, 0, 128, 0.4), 0 0 80px rgba(0, 242, 255, 0.3);
+            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.4);
+            --shadow-elevation: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+            /* Typography */
+            --font-display: 'Lilita One', cursive;
+            --font-heading: 'Fredoka', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--neon-pink);
+            color: white;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--rainbow-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: logo-pulse 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: var(--rainbow-gradient);
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: blur(10px);
+            animation: logo-glow 3s ease-in-out infinite;
+        }
+
+        .logo-icon i {
+            font-size: 24px;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes logo-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes logo-glow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            background: var(--rainbow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rainbow-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            background: var(--rainbow-gradient);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-multi);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--hero-gradient);
+            padding: 6rem 2rem 4rem;
+        }
+
+        /* Animated Background */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--neon-pink);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--electric-blue);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 7s;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--purple-base);
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+
+        /* Sparkles */
+        .sparkles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text h2 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            animation: slide-up 0.8s ease-out 0.2s both;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: slide-up 0.8s ease-out 0.4s both;
+        }
+
+        .hero-text h1 .gradient-text {
+            background: var(--rainbow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            animation: slide-up 0.8s ease-out 0.6s both;
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: slide-up 0.8s ease-out 0.8s both;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #0a0a0a;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            background: var(--neon-cyan);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            animation: fade-in 1s ease-out 0.4s both;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .rotating-border {
+            width: 450px;
+            height: 450px;
+            background: var(--rainbow-gradient);
+            border-radius: 50%;
+            padding: 6px;
+            animation: rotate 10s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-image-container {
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: white;
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        /* ========== QUICK INFO CARDS ========== */
+        .quick-info {
+            padding: 3rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .quick-info-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-pink);
+            box-shadow: var(--shadow-glow-pink);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .info-icon.pink {
+            color: var(--neon-pink);
+        }
+
+        .info-icon.cyan {
+            color: var(--neon-cyan);
+        }
+
+        .info-icon.purple {
+            color: var(--purple-base);
+        }
+
+        .info-icon.yellow {
+            color: var(--tik-yellow);
+        }
+
+        .info-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ========== PRODUCTS SECTION ========== */
+        .products {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .section-title-container h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-underline {
+            height: 4px;
+            width: 100px;
+            background: var(--rainbow-gradient);
+            border-radius: 2px;
+        }
+
+        .view-all-btn {
+            color: var(--neon-cyan);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            gap: 1rem;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: var(--shadow-elevation);
+        }
+
+        .product-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--neon-pink);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--radius-sm);
+        }
+
+        .product-badge.new {
+            background: var(--neon-pink);
+        }
+
+        .product-badge.hot {
+            background: var(--warm-orange);
+        }
+
+        .product-badge.promo {
+            background: var(--electric-blue);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .product-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--purple-base);
+            font-size: 0.75rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+
+        .add-btn {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-btn:hover {
+            background: var(--neon-cyan);
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        /* ========== TOTO SECTION ========== */
+        .toto-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toto-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .toto-visual {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toto-main-img {
+            width: 80%;
+            max-width: 400px;
+            z-index: 2;
+            filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.4));
+            animation: toto-float 4s ease-in-out infinite;
+        }
+
+        .toto-sub-img {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            animation: orbit 15s linear infinite;
+        }
+
+        .toto-sub-img.top-right {
+            top: 0;
+            right: 0;
+            animation-delay: -7s;
+        }
+
+        .toto-sub-img.bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        @keyframes toto-float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(200px) rotate(0deg);
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: rotate(360deg) translateX(200px) rotate(-360deg);
+                opacity: 0.8;
+            }
+        }
+
+        .toto-content {
+            flex: 1;
+        }
+
+        .toto-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--neon-pink);
+            color: white;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .toto-content h2 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .toto-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .toto-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--neon-cyan);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* ========== INSTAGRAM SECTION ========== */
+        .instagram {
+            padding: 6rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .instagram-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .instagram-header h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .instagram-header .gradient-text {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .instagram-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .instagram-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .instagram-post {
+            position: relative;
+            aspect-ratio: 1/1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .instagram-post:hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+
+        .instagram-post:hover img {
+            transform: scale(1.1);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(240, 148, 51, 0.9) 0%, rgba(188, 24, 136, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-post:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-overlay i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* ========== STORY SECTION ========== */
+        .story {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0a0a0a 0%, #16213e 100%);
+        }
+
+        .story-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .story-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .story-highlight:nth-child(odd) {
+            border-left-color: var(--neon-pink);
+        }
+
+        .story-highlight:nth-child(even) {
+            border-left-color: var(--neon-cyan);
+        }
+
+        .story-highlight:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .story-icon {
+            font-size: 2rem;
+            min-width: 50px;
+        }
+
+        .story-highlight:nth-child(1) .story-icon {
+            color: var(--neon-pink);
+        }
+
+        .story-highlight:nth-child(2) .story-icon {
+            color: var(--tik-yellow);
+        }
+
+        .story-highlight:nth-child(3) .story-icon {
+            color: var(--neon-cyan);
+        }
+
+        .story-highlight:nth-child(4) .story-icon {
+            color: var(--purple-base);
+        }
+
+        .story-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-text p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .story-collage {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .story-img {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .story-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .story-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .story-img:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact {
+            padding: 6rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-cyan);
+        }
+
+        .contact-item-text h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item-text p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-item-text a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item-text a:hover {
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-pink);
+            box-shadow: var(--shadow-glow-pink);
+        }
+
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            padding: 2rem;
+            background: #000000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        footer .gradient-text {
+            background: var(--rainbow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========== FLOATING WHATSAPP ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            animation: float-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes float-pulse {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.05);
+            }
+        }
+
+        .whatsapp-float:hover {
+            background: #20bb5a;
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-text p {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .rotating-border {
+                width: 350px;
+                height: 350px;
+            }
+
+            .toto-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .toto-content p {
+                margin: 0 auto 2rem;
+            }
+
+            .toto-stats {
+                justify-content: center;
+            }
+
+            .story-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title-container h2 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-collage {
+                grid-template-columns: 1fr;
+            }
+
+            .story-img:nth-child(1) {
+                grid-row: span 1;
+            }
+
+            .toto-content h2 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <span class="logo-text">TIK SHOPPER</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Colección</a></li>
+                <li><a href="#toto">Mascota</a></li>
+                <li><a href="#historia">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+            <a href="https://wa.me/message/6REEZMBTBE4VK1" class="cta-button">WhatsApp</a>
+
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+
+        <div class="sparkles" id="sparkles"></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Bienvenidos al Paraíso Geek</h2>
+                <h1>
+                    Conoce a <span class="gradient-text">TOTO</span><br>
+                    y nuestra Nueva Colección
+                </h1>
+                <p>
+                    Explora las últimas novedades en figuras, TCG y accesorios con la guía de nuestro guardián virtual.
+                    ¡La experiencia Tik Shopper ha evolucionado!
+                </p>
+                <div class="hero-buttons">
+                    <a href="#productos" class="btn-primary">Ver Productos</a>
+                    <a href="#toto" class="btn-secondary">Conocer a TOTO</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="rotating-border">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1613376023733-0a73315d9b06?q=80&w=900&auto=format&fit=crop"
+                            alt="Anime Collectibles">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="products">
+        <div class="section-header">
+            <div class="section-title-container">
+                <h2>Colección Destacada</h2>
+                <div class="title-underline"></div>
+            </div>
+            <a href="#" class="view-all-btn">
+                Ver todo <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/1.jpeg" alt="Producto Exclusivo 1">
+                    <span class="product-badge hot">HOT ITEM</span>
+                </div>
+                <div class="product-info">
+                    <h4>Figura Coleccionable</h4>
+                    <span class="product-category">Anime Series</span>
+                    <div class="product-footer">
+                        <span class="product-price"></span>
+                        <button class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/2.jpeg" alt="Producto Exclusivo 2">
+                    <span class="product-badge new">NUEVO</span>
+                </div>
+                <div class="product-info">
+                    <h4>Pack TCG Especial</h4>
+                    <span class="product-category">Trading Cards</span>
+                    <div class="product-footer">
+                        <span class="product-price"></span>
+                        <button class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/3.jpeg" alt="Producto Exclusivo 3">
+                </div>
+                <div class="product-info">
+                    <h4>Edición Limitada</h4>
+                    <span class="product-category">Manga & Art</span>
+                    <div class="product-footer">
+                        <span class="product-price"></span>
+                        <button class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/4.jpeg" alt="Producto Exclusivo 4">
+                    <span class="product-badge promo">OFERTA</span>
+                </div>
+                <div class="product-info">
+                    <h4>Accesorio Geek</h4>
+                    <span class="product-category">Lifestyle</span>
+                    <div class="product-footer">
+                        <span class="product-price"></span>
+                        <button class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/5.jpeg" alt="Producto Exclusivo 5">
+                </div>
+                <div class="product-info">
+                    <h4>Figura Deluxe</h4>
+                    <span class="product-category">Premium</span>
+                    <div class="product-footer">
+                        <span class="product-price"></span>
+                        <button class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/6.jpeg" alt="Producto Exclusivo 6">
+                    <span class="product-badge new">LLEGANDO</span>
+                </div>
+                <div class="product-info">
+                    <h4>Set Coleccionista</h4>
+                    <span class="product-category">Exclusive</span>
+                    <div class="product-footer">
+                        <span class="product-price"></span>
+                        <button class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOTO Mascot Section -->
+    <section id="toto" class="toto-section">
+        <div class="toto-container">
+            <div class="toto-content">
+                <span class="toto-badge">Mascota Oficial</span>
+                <h2>Hola, soy <span class="gradient-text">TOTO</span></h2>
+                <p>Soy el erizo guardián de Tik Shopper. Mi misión es proteger los coleccionables más valiosos y
+                    ayudarte a encontrar las mejores ofertas del mundo geek.</p>
+                <div class="toto-stats">
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Kawaii</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Vugilancia</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toto-visual">
+                <img src="img/a.jpeg" alt="TOTO Principal" class="toto-main-img">
+                <img src="img/b.jpeg" alt="TOTO Mini" class="toto-sub-img top-right">
+                <img src="img/c.jpeg" alt="TOTO Sleeping" class="toto-sub-img bottom-left">
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="historia" class="story">
+        <div class="story-container">
+            <div class="story-content">
+                <h2>4 Años de Pasión Geek</h2>
+
+                <div class="story-highlight">
+                    <div class="story-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="story-text">
+                        <h3>Somos Fanáticos Como Tú</h3>
+                        <p>Amamos el anime, el manga y la cultura geek tanto como tú. Cada producto es seleccionado con
+                            pasión.</p>
+                    </div>
+                </div>
+
+                <div class="story-highlight">
+                    <div class="story-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="story-text">
+                        <h3>Productos 100% Originales</h3>
+                        <p>Solo trabajamos con distribuidores oficiales. Garantía de autenticidad en cada figura y
+                            carta.</p>
+                    </div>
+                </div>
+
+                <div class="story-highlight">
+                    <div class="story-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="story-text">
+                        <h3>Atención Personalizada</h3>
+                        <p>Te asesoramos para encontrar exactamente lo que buscas. Tu satisfacción es nuestra prioridad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="story-highlight">
+                    <div class="story-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="story-text">
+                        <h3>Comunidad Activa</h3>
+                        <p>Eventos TCG semanales, torneos y encuentros. Únete a nuestra comunidad de coleccionistas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-collage">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop"
+                        alt="Store">
+                </div>
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1613376023733-0a73315d9b06?q=80&w=600&auto=format&fit=crop"
+                        alt="Products">
+                </div>
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=600&auto=format&fit=crop"
+                        alt="Community">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Visítanos</h2>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-item-text">
+                        <h4>Ubicación</h4>
+                        <p>Manuel Montt 590, Locales 7 y 10<br>Curicó, Chile</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-item-text">
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/message/6REEZMBTBE4VK1">Chatea con nosotros</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-item-text">
+                        <h4>Horario</h4>
+                        <p>Lunes a Sábado: 9:30 - 19:30 hrs</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/tik_shopper/" target="_blank" class="social-btn">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/tikshopper" target="_blank" class="social-btn">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/message/6REEZMBTBE4VK1" target="_blank" class="social-btn">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.8!2d-71.24!3d-34.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU4JzQ4LjAiUyA3McKwMTQnMjQuMCJX!5e0!3m2!1ses!2scl!4v1234567890"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 <span class="gradient-text">Tik Shopper</span> - Todos los derechos reservados. Hecho con ❤️ para
+            la comunidad geek de Curicó.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/message/6REEZMBTBE4VK1" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe info cards
+        document.querySelectorAll('.info-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Generate sparkles
+        const sparklesContainer = document.getElementById('sparkles');
+        for (let i = 0; i < 30; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparklesContainer.appendChild(sparkle);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
