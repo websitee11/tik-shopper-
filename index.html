@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tik Shopper | TOTO & Colección Exclusiva</title>
+    <title>Tik Shopper | TOTO &amp; Colección Exclusiva</title>
     <meta name="description"
         content="Descubre nuestra colección exclusiva de anime y conoce a TOTO, tu asistente virtual en Tik Shopper.">
 
@@ -128,6 +128,7 @@
             align-items: center;
         }
 
+        /* ===== LOGO MEJORADO CON d.jpeg ===== */
         .logo-container {
             display: flex;
             align-items: center;
@@ -135,58 +136,27 @@
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--rainbow-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: logo-pulse 3s ease-in-out infinite;
+        .logo-img-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
             position: relative;
+            flex-shrink: 0;
+            box-shadow: 0 0 18px rgba(0, 168, 255, 0.5);
+            border: 2px solid rgba(0, 242, 255, 0.4);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            background: var(--rainbow-gradient);
-            border-radius: 50%;
-            opacity: 0.3;
-            filter: blur(10px);
-            animation: logo-glow 3s ease-in-out infinite;
+        .logo-img-wrap:hover {
+            box-shadow: 0 0 28px rgba(0, 242, 255, 0.8);
+            transform: scale(1.06);
         }
 
-        .logo-icon i {
-            font-size: 24px;
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes logo-pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes logo-glow {
-
-            0%,
-            100% {
-                opacity: 0.3;
-            }
-
-            50% {
-                opacity: 0.6;
-            }
+        .logo-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .logo-text {
@@ -465,10 +435,13 @@
             transform: translateY(-3px);
         }
 
-        /* Hero Visual */
+        /* ===== HERO VISUAL CON a.jpg (erizo azulado) ===== */
         .hero-visual {
             position: relative;
             animation: fade-in 1s ease-out 0.4s both;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes fade-in {
@@ -481,14 +454,17 @@
             }
         }
 
+        /* Anillo giratorio de fondo - decorativo */
         .rotating-border {
-            width: 450px;
-            height: 450px;
+            width: 420px;
+            height: 420px;
             background: var(--rainbow-gradient);
             border-radius: 50%;
-            padding: 6px;
+            padding: 4px;
             animation: rotate 10s linear infinite;
             margin: 0 auto;
+            position: relative;
+            flex-shrink: 0;
         }
 
         @keyframes rotate {
@@ -501,6 +477,7 @@
             }
         }
 
+        /* Contenedor interior — imagen de coleccionables como en el original */
         .hero-image-container {
             width: 100%;
             height: 100%;
@@ -822,11 +799,13 @@
             justify-content: center;
         }
 
+        /* a.jpeg — sticker con fondo transparente, se adapta al oscuro de la sección */
         .toto-main-img {
-            width: 80%;
-            max-width: 400px;
+            width: 85%;
+            max-width: 420px;
             z-index: 2;
-            filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.4));
+            background-color: transparent;
+            filter: drop-shadow(0 0 24px rgba(77, 184, 255, 0.55)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
             animation: toto-float 4s ease-in-out infinite;
         }
 
@@ -850,18 +829,6 @@
         .toto-sub-img.bottom-left {
             bottom: 0;
             left: 0;
-        }
-
-        @keyframes toto-float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(2deg);
-            }
         }
 
         @keyframes orbit {
@@ -1229,6 +1196,40 @@
             background-clip: text;
         }
 
+        /* Logo destacado en footer */
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            border: 3px solid rgba(0, 242, 255, 0.5);
+            box-shadow: 0 0 24px rgba(0, 168, 255, 0.5), 0 0 60px rgba(0, 242, 255, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-logo-img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 36px rgba(0, 242, 255, 0.7), 0 0 80px rgba(0, 168, 255, 0.35);
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            background: var(--rainbow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
         /* ========== FLOATING WHATSAPP ========== */
         .whatsapp-float {
             position: fixed;
@@ -1286,8 +1287,8 @@
             }
 
             .rotating-border {
-                width: 350px;
-                height: 350px;
+                width: 340px;
+                height: 340px;
             }
 
             .toto-container {
@@ -1345,6 +1346,11 @@
             .toto-content h2 {
                 font-size: 3rem;
             }
+
+            .rotating-border {
+                width: 280px;
+                height: 280px;
+            }
         }
     </style>
 </head>
@@ -1354,9 +1360,10 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
+            <!-- Logo con d.jpeg (logo oficial de la empresa) -->
             <a href="#" class="logo-container">
-                <div class="logo-icon">
-                    <i class="fas fa-gamepad"></i>
+                <div class="logo-img-wrap">
+                    <img src="img/d.jpeg" alt="Tik Shopper Logo">
                 </div>
                 <span class="logo-text">TIK SHOPPER</span>
             </a>
@@ -1404,6 +1411,7 @@
                 </div>
             </div>
 
+            <!-- Disco giratorio con imagen de coleccionables (igual que original) -->
             <div class="hero-visual">
                 <div class="rotating-border">
                     <div class="hero-image-container">
@@ -1416,6 +1424,40 @@
 
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info">
+        <div class="quick-info-container">
+            <div class="info-card">
+                <div class="info-icon pink"><i class="fas fa-shipping-fast"></i></div>
+                <div class="info-content">
+                    <h3>Envío Rápido</h3>
+                    <p>Despachos a todo Chile con seguimiento en tiempo real</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon cyan"><i class="fas fa-shield-alt"></i></div>
+                <div class="info-content">
+                    <h3>100% Originales</h3>
+                    <p>Productos auténticos con garantía de autenticidad</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon purple"><i class="fas fa-headset"></i></div>
+                <div class="info-content">
+                    <h3>Soporte 24/7</h3>
+                    <p>Atención personalizada vía WhatsApp y redes sociales</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon yellow"><i class="fas fa-star"></i></div>
+                <div class="info-content">
+                    <h3>Comunidad Geek</h3>
+                    <p>Eventos TCG, torneos y coleccionistas apasionados</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1475,7 +1517,7 @@
                 </div>
                 <div class="product-info">
                     <h4>Edición Limitada</h4>
-                    <span class="product-category">Manga & Art</span>
+                    <span class="product-category">Manga &amp; Art</span>
                     <div class="product-footer">
                         <span class="product-price"></span>
                         <button class="add-btn">
@@ -1555,13 +1597,13 @@
                     </div>
                     <div class="stat-item">
                         <h3>24/7</h3>
-                        <p>Vugilancia</p>
+                        <p>Vigilancia</p>
                     </div>
                 </div>
             </div>
 
             <div class="toto-visual">
-                <img src="img/a.jpeg" alt="TOTO Principal" class="toto-main-img">
+                <img src="img/a.png" alt="TOTO Principal" class="toto-main-img">
                 <img src="img/b.jpeg" alt="TOTO Mini" class="toto-sub-img top-right">
                 <img src="img/c.jpeg" alt="TOTO Sleeping" class="toto-sub-img bottom-left">
             </div>
@@ -1694,6 +1736,10 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-brand">
+            <img src="img/d.jpeg" alt="Tik Shopper Logo" class="footer-logo-img">
+            <span class="footer-brand-name">TIK SHOPPER</span>
+        </div>
         <p>&copy; 2024 <span class="gradient-text">Tik Shopper</span> - Todos los derechos reservados. Hecho con ❤️ para
             la comunidad geek de Curicó.</p>
     </footer>
@@ -1768,7 +1814,4 @@
 
 </body>
 
-
 </html>
-
-
